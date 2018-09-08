@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k8s-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: cluster-1-ingress
+    kubernetes.io/ingress.allow-http: "false"
+spec:
+    tls:
+    - secretName: 'wildcard-company-com'
+    rules:
+    - host: verdaccio.company.com
+      http:
+        paths:
+        - backend:
+            serviceName: verdaccio
+            servicePort: 80

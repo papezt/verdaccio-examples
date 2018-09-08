@@ -1,0 +1,14 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: verdaccio
+  labels:
+    type: local
+spec:
+  storageClassName: "local-dev"
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "~/k8s-pv1"
